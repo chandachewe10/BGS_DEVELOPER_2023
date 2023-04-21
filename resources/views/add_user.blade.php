@@ -15,7 +15,7 @@
 
         <div class="card mask-custom">
           <div class="card-body p-4 text-black">
-            <h3>ADD ADDITIONAL USER TO PERFORM THE TODO-TASKS</h3>
+            <h6>ADD ADDITIONAL USER TO PERFORM THE TODO-TASKS</h6>
             <br>
 <!-- Add User Name-->
 <form action="{{route('store_user')}}" method="post">
@@ -24,7 +24,9 @@
           <div class="pb-2">
               <div class="card">
                 <div class="card-body">
+                <label for="email">Full Name</label>
                   <div class="d-flex flex-row align-items-center">
+                 
                     <!--Create Task-->
                     <input type="text" name="name" value="" class="@error('name') is-invalid @enderror form-control form-control-lg" 
                       placeholder="Enter Name">
@@ -57,7 +59,7 @@
  <!-- Create Password--> 
  <div class="form-group">
 <label for="UserPassword">Password</label>
-<input type="email" name="password" value="" class="@error('password') is-invalid @enderror form-control form-control-lg" 
+<input type="password" name="password" value="" minlength="8" class="@error('password') is-invalid @enderror form-control form-control-lg" 
 >
 </div>
 @error('password')
