@@ -29,7 +29,11 @@ class ToDoListController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validate Task and Date 
+        $validated = $request->validate([
+            'task' => 'required|string|max:255',
+            'date' => 'required|date',
+        ]);
     }
 
     /**
