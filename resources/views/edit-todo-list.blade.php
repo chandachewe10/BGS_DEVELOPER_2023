@@ -1,14 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="font-semibold text-xl">
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
+    
                     
 <!--ToDo List Component-->
 <section class="vh-100 gradient-custom-2">
@@ -17,8 +14,8 @@
       <div class="col-md-12 col-xl-10">
 
         <div class="card mask-custom">
-          <div class="card-body p-4 text-white">
-            <h3>EDIT TASK</h3>
+          <div class="card-body p-4 text-black">
+            <h3>UPDATE TASK</h3>
             <br>
 <!-- Add Task-->
 <form action="{{route('task.update',['task'=>$task->id])}}" method="post">
@@ -36,29 +33,34 @@
 @enderror
 <!--End Creating Task-->
 
-<!-- Create Due Date--> 
-<div class="form-group">
-<label for="Due Date" >Due Date</label>
-<input type="date" name="due_date" value="{{$task->due_date}}" class="@error('date') is-invalid @enderror form-control form-control-lg" 
->
-</div>
-<!--End creating task-->
-@error('due_date')
-    <div class="alert alert-danger">{{ $message }}</div>
-@enderror
-                    <div>
-                    <br>
-                      <button type="submit" class="btn btn-primary">Update</button>
-                      
-                    </div>
+
+
+                   
                   </div>
                 </div>
               </div>
             </div>
 
+            <!-- Create Due Date--> 
+<div class="form-group">
+<label for="Due Date" >Due Date</label>
+<input type="date" name="due_date" value="{{$task->due_date}}" class="@error('date') is-invalid @enderror form-control form-control-lg" 
+>
+</div>
+@error('due_date')
+    <div class="alert alert-danger">{{ $message }}</div>
+@enderror
+<!--End creating task-->
+<br>
+<!--Update Button-->
+<div>
+                    <br>
+                      <button type="submit" class="btn btn-primary">Update</button>
+                      
+                    </div>
 </form>           
 <!--Task List-->
-            <table class="table text-white mb-0">
+            <table class="table text-black mb-0">
               <thead>
                 <tr>
                   <th scope="col">No</th>
@@ -115,8 +117,5 @@ $tasks = \App\Models\ToDoList::get();
 <!--ToDo List Component-->
 
 
-                </div>
-            </div>
-        </div>
-    </div>
+            
 </x-app-layout>

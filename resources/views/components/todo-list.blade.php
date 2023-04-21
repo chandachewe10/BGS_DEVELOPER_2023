@@ -4,8 +4,8 @@
       <div class="col-md-12 col-xl-10">
 
         <div class="card mask-custom">
-          <div class="card-body p-4 text-white">
-            <h3>ADD TASK</h3>
+          <div class="card-body p-4">
+            <h3 class="text-xl">ADD TASK</h3>
             <br>
 <!-- Add Task-->
 <form action="{{route('task.store')}}" method="post">
@@ -21,30 +21,31 @@
     <div class="alert alert-danger">{{ $message }}</div>
 @enderror
 <!--End Creating Task-->
-
+<br>
 <!-- Create Due Date--> 
-<div class="form-group">
-<label for="Due Date" >Due Date</label>
-<input type="date" name="due_date" class="@error('date') is-invalid @enderror form-control form-control-lg" 
->
-</div>
+
 <!--End creating task-->
 @error('due_date')
     <div class="alert alert-danger">{{ $message }}</div>
 @enderror
-                    <div>
-                    <br>
-                      <button type="submit" class="btn btn-primary">Add</button>
-                      
-                    </div>
+                   
                   </div>
                 </div>
               </div>
             </div>
-
+            <div class="form-group">
+<label for="Due Date" >Due Date</label>
+<input type="date" name="due_date" class="@error('date') is-invalid @enderror form-control form-control-lg" 
+>
+</div>
+<div>
+                    <br>
+                      <button type="submit" class="btn btn-primary">Add</button>
+                      
+                    </div>
 </form>           
 <!--Task List-->
-            <table class="table text-white mb-0">
+            <table class="table text-black mb-0">
               <thead>
                 <tr>
                   <th scope="col">No</th>
