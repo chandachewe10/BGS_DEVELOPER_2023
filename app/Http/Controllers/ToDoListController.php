@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\ToDoList;
+Use Alert;
 
 class ToDoListController extends Controller
 {
@@ -30,10 +32,15 @@ class ToDoListController extends Controller
     public function store(Request $request)
     {
         // Validate Task and Date 
-        $validated = $request->validate([
+        $request->validate([
             'task' => 'required|string|max:255',
             'date' => 'required|date',
         ]);
+
+        // Store Data Now 
+ToDoList::create($request->all());
+toast('Task Created Successfully','success');
+return redirect()->back();
     }
 
     /**

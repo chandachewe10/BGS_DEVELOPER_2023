@@ -14,14 +14,24 @@
               <div class="card">
                 <div class="card-body">
                   <div class="d-flex flex-row align-items-center">
-                    <input type="string" class="form-control form-control-lg" 
+                    <!--Create Task-->
+                    <input type="text" name="task" class="@error('task') is-invalid @enderror form-control form-control-lg" 
                       placeholder="Add new...">
-                      <div class="form-group">
-<label for="Due Date" >Due Date</label>
-<input type="date" name="due_date" class="form-control form-control-lg" 
-                      >
-                      </div>
+                      @error('task')
+    <div class="alert alert-danger">{{ $message }}</div>
+@enderror
+<!--End Creating Task-->
 
+<!-- Create Due Date--> 
+<div class="form-group">
+<label for="Due Date" >Due Date</label>
+<input type="date" name="date" class="@error('date') is-invalid @enderror form-control form-control-lg" 
+>
+</div>
+<!--End creating task-->
+@error('date')
+    <div class="alert alert-danger">{{ $message }}</div>
+@enderror
                     <div>
                     <br>
                       <button type="submit" class="btn btn-primary">Add</button>
