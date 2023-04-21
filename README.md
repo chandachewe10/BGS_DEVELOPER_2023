@@ -29,7 +29,7 @@ Navigate to the root of your cloned project, open your command Line Terminal `cm
 php artisan migrate
 ```
 
-Finally run npm install && npm rundev and generate the application key as:
+Finally run npm install && npm run dev and generate the application key as:
 
 ```bash
 1. php artisan key:generate 
