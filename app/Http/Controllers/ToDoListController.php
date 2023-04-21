@@ -23,7 +23,7 @@ class ToDoListController extends Controller
     public function create()
     {
         //
-        return "Hello";
+        
     }
 
     /**
@@ -54,24 +54,48 @@ return redirect()->route('dashboard');
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($task)
     {
+       
         //
+        return view('edit-todo-list',[
+            'task' => ToDoList::findOrFail($task)
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request,$task)
     {
+
+       
         //
+         // Validate Task and Date 
+         $request->validate([
+            'task' => 'required|string|max:255',
+            'due_date' => 'required|date',
+        ]);
+
+        // Store Data Now 
+$todo = ToDoList::findOrFail($task);        
+$todo->update($request->all());
+toast('Task Updated Successfully','success');
+return redirect()->route('dashboard');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($task)
     {
-        //
+
+   $todo = ToDoList::findOrFail($task);
+   if($todo){
+    $todo->delete();
+        // Destroy Task
+toast('Task Deleted Successfully','success');
+return redirect()->route('dashboard');
+   }
     }
 }
