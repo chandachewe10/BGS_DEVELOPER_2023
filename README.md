@@ -19,9 +19,11 @@ git clone https://github.com/chandachewe10/BGS_DEVELOPER_2023.git
 
 Navigate to the root of your cloned project, open your command Line Terminal `cmd` and perform the following actions:
 
-> **Important**: `composer update`
-> `copy .env.example .env`
->  **Important**: Navigate to `.env` file, write your Database name, database username, database password on `DB_DATABASE,DB_USERNAME` and `DB_PASSWORD` respectively. Next migrate database tables as follows:    
+1. `composer update`
+2. `copy .env.example .env`
+3. Navigate to `.env` file, write your Database name, database username, database password on `DB_DATABASE,DB_USERNAME` and `DB_PASSWORD` respectively. Next migrate database tables as follows:    
+ 
+>  **Important**: 
 
 ```php
 php artisan migrate
