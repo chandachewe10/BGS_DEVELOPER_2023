@@ -16,6 +16,6 @@ class ToDoList extends Model
      */
     protected $fillable = [
         'task',
-        'date'
+        'due_date'
     ];
 }

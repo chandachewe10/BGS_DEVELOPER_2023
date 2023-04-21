@@ -25,11 +25,11 @@
 <!-- Create Due Date--> 
 <div class="form-group">
 <label for="Due Date" >Due Date</label>
-<input type="date" name="date" class="@error('date') is-invalid @enderror form-control form-control-lg" 
+<input type="date" name="due_date" class="@error('date') is-invalid @enderror form-control form-control-lg" 
 >
 </div>
 <!--End creating task-->
-@error('date')
+@error('due_date')
     <div class="alert alert-danger">{{ $message }}</div>
 @enderror
                     <div>
@@ -47,30 +47,39 @@
             <table class="table text-white mb-0">
               <thead>
                 <tr>
-                  
+                  <th scope="col">No</th>
                   <th scope="col">Task</th>
                   <th scope="col">Due Date</th>
                   <th scope="col">Actions</th>
                 </tr>
               </thead>
               <tbody>
+                @php  
+
+$tasks = \App\Models\ToDoList::get();
+
+                @endphp
                 <tr class="fw-normal">
-                 
+                @forelse($tasks as $task ) 
                   <td class="align-middle">
-                    <span>Call Sam For payments</span>
+                    <span>{{$task->id}}</span>
                   </td>
                   <td class="align-middle">
-                    <h6 class="mb-0"><span class="badge bg-danger">12 May 2023</span></h6>
+                    <span>{{$task->task}}</span>
                   </td>
                   <td class="align-middle">
-                    <a href="#!" data-mdb-toggle="tooltip" title="Done"><i
+                    <h6 class="mb-0"><span class="badge bg-danger">{{date('d, F-Y',strtotime($task->due_date))}}</span></h6>
+                  </td>
+                  <td class="align-middle">
+                    <a href="{{route('task.edit',['task' => $task->id])}}" data-mdb-toggle="tooltip" title="Edit"><i
                         class="fa fa-pencil fa-lg me-3"></i></a>
-                    <a href="#!" data-mdb-toggle="tooltip" title="Remove"><i
+                    <a href="{{route('task.destroy',['task' => $task->id])}}" data-mdb-toggle="tooltip" title="Destroy"><i
                         class="fa fa-trash fa-lg text-warning"></i></a>
                   </td>
                 </tr>
-               
-                </tr>
+               @empty
+               <span>You have not added any ToDo Task(s) yet
+               @endforelse
               </tbody>
             </table>
 

@@ -34,13 +34,13 @@ class ToDoListController extends Controller
         // Validate Task and Date 
         $request->validate([
             'task' => 'required|string|max:255',
-            'date' => 'required|date',
+            'due_date' => 'required|date',
         ]);
 
         // Store Data Now 
 ToDoList::create($request->all());
 toast('Task Created Successfully','success');
-return redirect()->back();
+return redirect()->route('dashboard');
     }
 
     /**
