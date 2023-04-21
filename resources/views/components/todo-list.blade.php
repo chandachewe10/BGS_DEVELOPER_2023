@@ -43,6 +43,7 @@
                       <button type="submit" class="btn btn-primary">Add</button>
                       
                     </div>
+                    <input type="hidden" name="user_id" value="{{auth()->user()->id}}" >
 </form>           
 <!--Task List-->
             <table class="table text-black mb-0">
@@ -57,7 +58,7 @@
               <tbody>
                 @php  
 
-$tasks = \App\Models\ToDoList::get();
+$tasks = \App\Models\ToDoList::where('user_id',"=",auth()->user()->id)->get();
 
                 @endphp
                 <tr class="fw-normal">

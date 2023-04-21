@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('task');
             $table->string('due_date');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }
