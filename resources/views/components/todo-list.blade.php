@@ -5,15 +5,35 @@
 
         <div class="card mask-custom">
           <div class="card-body p-4 text-white">
+            <h3>ADD TASK</h3>
+            <br>
+<!-- Add Task-->
+<form action="{{route('task.store')}}" method="post">
+    @csrf
+          <div class="pb-2">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex flex-row align-items-center">
+                    <input type="string" class="form-control form-control-lg" 
+                      placeholder="Add new...">
+                      <div class="form-group">
+<label for="Due Date" >Due Date</label>
+<input type="date" name="due_date" class="form-control form-control-lg" 
+                      >
+                      </div>
 
-            <div class="text-center pt-3 pb-2">
-              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-todo-list/check1.webp"
-                alt="Check" width="60">
-              <h2 class="my-4">Task List</h2>
+                    <div>
+                    <br>
+                      <button type="submit" class="btn btn-primary">Add</button>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
-
-
+</form>           
+<!--Task List-->
             <table class="table text-white mb-0">
               <thead>
                 <tr>
@@ -34,9 +54,9 @@
                   </td>
                   <td class="align-middle">
                     <a href="#!" data-mdb-toggle="tooltip" title="Done"><i
-                        class="fas fa-check fa-lg text-success me-3"></i></a>
+                        class="fa fa-pencil fa-lg me-3"></i></a>
                     <a href="#!" data-mdb-toggle="tooltip" title="Remove"><i
-                        class="fas fa-trash-alt fa-lg text-warning"></i></a>
+                        class="fa fa-trash fa-lg text-warning"></i></a>
                   </td>
                 </tr>
                
